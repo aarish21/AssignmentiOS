@@ -11,8 +11,12 @@ AssignmentSwipe is an iOS application built using SwiftUI that allows users to v
 
 ## Screenshots
 
-### Product List View
-![Product List View](path_to_your_product_list_view_screenshot)
+### Dashboard
+![Dashboard](https://github.com/aarish21/AssignmentiOS/assets/65631993/d2d72c42-3900-457f-aeb9-705b0d065bea)
 
-### Add Product View
-![Add Product View](path_to_your_add_product_view_screenshot)
+### Add View
+![Add View](https://github.com/aarish21/AssignmentiOS/assets/65631993/b9fcd97e-c311-4926-bea4-abf563b08e90)
+
+### Alert to show error
+![Alert](https://github.com/aarish21/AssignmentiOS/assets/65631993/e45f50f9-6f01-442a-b59f-93bdcaa3f131)
+
