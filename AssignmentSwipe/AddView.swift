@@ -5,8 +5,8 @@
 //  Created by Aarish on 09/06/24.
 //
 import SwiftUI
-struct AddProductView: View {
-    @ObservedObject var product: ViewModel
+struct AddView: View {
+    @ObservedObject var product: GetVM
     @StateObject private var viewModel = AddProductViewModel()
     @State private var showingImagePicker = false
     @Environment(\.presentationMode) var presentationMode

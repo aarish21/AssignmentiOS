@@ -7,13 +7,13 @@
 
 import Foundation
 
-class ViewModel: ObservableObject {
+class GetVM: ObservableObject {
     @Published var items: [Item] = []
 
     init() {
         fetchData()
     }
-
+//    fetch data using urlsession 
     func fetchData() {
         guard let url = URL(string: "https://app.getswipe.in/api/public/get") else {
             return

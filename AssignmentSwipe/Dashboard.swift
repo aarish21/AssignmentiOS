@@ -5,79 +5,10 @@
 //  Created by Aarish on 09/06/24.
 //
 
-//import SwiftUI
-//
-//struct ContentView: View {
-//    @State private var showAddOption = false
-//    @StateObject private var viewModel = ViewModel()
-//    @State private var searchText = ""
-//    
-//    var body: some View {
-//        NavigationView {
-//            List(filteredItems) { item in
-//                HStack {
-//                    AsyncImage(url: URL(string: item.image)) { image in
-//                        image.resizable()
-//                    } placeholder: {
-//                        Image("27002")
-//                            
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(width: 80, height: 80)
-//                            .cornerRadius(10)
-//                    }
-//                    .aspectRatio(contentMode: .fill)
-//                    .frame(width: 80, height: 80)
-//                    .cornerRadius(10)
-//                    
-//                    VStack(alignment: .leading) {
-//                        Text(item.productName)
-//                            .font(.headline)
-//                        Text("Type: \(item.productType)")
-//                        Text(String(format: "Price: %.1f", item.price))
-//                        Text(String(format: "Tax: %.1f", item.tax))
-//                        
-//                        
-//                    }
-//                    
-//                }
-//                
-//            }
-//            .searchable(text: $searchText)
-//            .navigationTitle("Swipe")
-//            .toolbar{
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Button {
-//                        showAddOption = true
-//                    } label: {
-//                        Label("", systemImage: "plus")
-//                    }
-//                }
-//            }
-//            .sheet(isPresented: $showAddOption){
-//                AddProductView()
-//            }
-//            .onAppear {
-//                viewModel.fetchData()
-//            }
-//        }
-//    }
-//    var filteredItems: [Item] {
-//        if searchText.isEmpty {
-//            return viewModel.items
-//        } else {
-//            return viewModel.items.filter { $0.productName.localizedCaseInsensitiveContains(searchText) }
-//        }
-//    }
-//}
-//
-//#Preview {
-//    ContentView()
-//}
-//
-//
+
 import SwiftUI
 
-struct ContentView: View {
+struct Dashboard: View {
     @State private var showAddOption = false
     @StateObject private var viewModel = ViewModel()
     @State private var searchText = ""
@@ -167,5 +98,5 @@ struct ItemRow: View {
 }
 
 #Preview {
-    ContentView()
+    Dashboard()
 }

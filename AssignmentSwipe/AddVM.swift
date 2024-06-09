@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-class AddProductViewModel: ObservableObject {
+class AddVM: ObservableObject {
    
     @Published var newProduct = NewProduct()
     @Published var productTypes = [
