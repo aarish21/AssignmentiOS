@@ -6,23 +6,23 @@
 //
 import SwiftUI
 struct AddView: View {
-    @ObservedObject var product: GetVM
-    @StateObject private var viewModel = AddProductViewModel()
+    @ObservedObject var getVM: GetVM
+    @StateObject private var addVM = AddVM()
     @State private var showingImagePicker = false
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Product Information")) {
-                    Picker("Product Type", selection: $viewModel.newProduct.productType) {
-                        ForEach(viewModel.productTypes, id: \.self) {
+                    Picker("Product Type", selection: $addVM.newProduct.productType) {
+                        ForEach(addVM.productTypes, id: \.self) {
                             Text($0)
                         }
                     }
-                    TextField("Product Name", text: $viewModel.newProduct.productName)
-                    TextField("Price", text: $viewModel.newProduct.price)
+                    TextField("Product Name", text: $addVM.newProduct.productName)
+                    TextField("Price", text: $addVM.newProduct.price)
                         .keyboardType(.decimalPad)
-                    TextField("Tax", text: $viewModel.newProduct.tax)
+                    TextField("Tax", text: $addVM.newProduct.tax)
                         .keyboardType(.decimalPad)
                 }
 
@@ -31,7 +31,7 @@ struct AddView: View {
                         showingImagePicker = true
                        
                     }
-                    if let selectedImage = viewModel.selectedImage {
+                    if let selectedImage = addVM.selectedImage {
                         Image(uiImage: selectedImage)
                             .resizable()
                             .scaledToFit()
@@ -40,21 +40,23 @@ struct AddView: View {
                     }
                 }
             }
-            .alert(isPresented: $viewModel.showAlert) {
-                Alert(title: Text("Alert"), message: Text(viewModel.feedbackMessage ?? "Error"), dismissButton: .default(Text("OK")))
+            .alert(isPresented: $addVM.showAlert) {
+//                show alert on  failure
+                Alert(title: Text("Alert"), message: Text(addVM.feedbackMessage ?? "Error"), dismissButton: .default(Text("OK")))
             }
 
             .navigationTitle("Add Product")
             .sheet(isPresented: $showingImagePicker, content: {
-                ImagePicker(image: $viewModel.selectedImage)
+                ImagePicker(image: $addVM.selectedImage)
             })
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
-                        viewModel.submitProduct{
+                        addVM.submitProduct{
                             self.presentationMode.wrappedValue.dismiss()
+//                            fetch and update the Dashboard
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                product.fetchData()
+                                getVM.fetchData()
                             }
                             
                         }

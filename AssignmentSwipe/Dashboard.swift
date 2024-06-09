@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Dashboard: View {
     @State private var showAddOption = false
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var getVM = GetVM()
     @State private var searchText = ""
     
     var body: some View {
@@ -34,10 +34,10 @@ struct Dashboard: View {
                 }
             }
             .sheet(isPresented: $showAddOption) {
-                AddProductView(product: viewModel)
+                AddView(getVM: getVM)
             }
             .onAppear {
-                viewModel.fetchData()
+                getVM.fetchData()
             }
         }
         .background(Color(UIColor.systemGroupedBackground))
@@ -45,9 +45,9 @@ struct Dashboard: View {
     
     var filteredItems: [Item] {
         if searchText.isEmpty {
-            return viewModel.items
+            return getVM.items
         } else {
-            return viewModel.items.filter { $0.productName.localizedCaseInsensitiveContains(searchText) }
+            return getVM.items.filter { $0.productName.localizedCaseInsensitiveContains(searchText) }
         }
     }
 }

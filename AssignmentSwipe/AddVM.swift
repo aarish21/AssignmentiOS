@@ -20,7 +20,7 @@ class AddVM: ObservableObject {
     @Published var selectedImage: UIImage? = nil
     @Published var feedbackMessage: String? = nil
     @Published var showAlert = false
-    
+//    submit the product using POST http request
     func submitProduct(onSuccess: @escaping () -> Void) {
         guard validateFields() else { return }
         
@@ -75,7 +75,7 @@ class AddVM: ObservableObject {
         }
         return true
     }
-
+//    create the form data
     private func createFormData(boundary: String) -> Data {
         var data = Data()
         
